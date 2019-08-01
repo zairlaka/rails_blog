@@ -1,0 +1,54 @@
+<% content_for :page_title, "Show" %>
+<br>
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                 <div class="panel-heading">
+                    <%= link_to 'Back', :root,class: 'btn btn-default btn-sm border-main' %>
+                    <strong class="pull-right"><%= "#{@post.user.username} | #{@post.user.email}" %> </strong>
+                   <!--      ----------------------------------------------------------------     follower button              --->
+                   <%# pre_follower = @user.followers.find { |follower| follower.follower_id == current_user.id} %>
+                   <%# if pre_follower %>
+                     <%#= button_to 'Follow', relationship_path(@post, pre_prefollower), method: :delete ,class:"btn btn-warning btn-sm pull-right"%>
+                   <%# else %>
+                     <%#= button_to 'Unfollow', relationships_path(@post), method: :post ,class:"btn btn-primary btn-sm pull-right"%>
+                   <%# end %>
+                   <!--      ----------------------------------------------------------------                    --->
+                 </div> 
+                    <div class="panel-body">
+                        <h2><%= @post.title %><small class="pull-right">Category - <strong><%= @post.category.name %></strong></small></h2>
+                        <hr class="hr-success">
+                        <p>
+                          <%= sanitize @post.body,
+                                       tags: %w(strong em a b font br p table tbody tr td ol li u img iframe span blockquote pre h1 h2 h3 h4 h5 h6 div strike hr),
+                                       attributes: %w(href face class src style ta rget frameborder width height color) %>
+                        </p>
+                        <br>
+                        <span><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes' %></span>
+                        <% if current_user.present? %>
+
+                          <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+                          <% if pre_like %>
+                            <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete ,class:"btn btn-warning btn-sm"%>
+                          <% else %>
+                            <%= button_to 'Like', post_likes_path(@post), method: :post ,class:"btn btn-primary btn-sm"%>
+                        <% end %>
+
+                          <% if(current_user == @post.user || current_user.isadmin) %><br>
+                            <p>
+                                <%= link_to "Edit", edit_post_path(@post),class:"btn btn-info btn-sm" %>
+                                <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-danger pull-right btn-sm" %>
+                            </p>
+                          <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        
+    
+    <h4><strong><%= @post.comments.count %></strong> Comments</h4>
+    <%= render @post.comments %>
+    <h2 class="grad">Leave a Reply</h2>
+
+    <%= render 'comments/form'%>
+</div>

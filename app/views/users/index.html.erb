@@ -1,0 +1,30 @@
+
+<% content_for :page_title, "All Users" %>
+<br>
+
+<div class="container">          
+<%= link_to 'Back', :root,class: 'btn btn-default border-main' %>
+<br /><br />
+  <table class="table table-hover">
+    <thead class="mcolor">
+      <tr>
+        <th>ID</th>
+        <th>User Name</th>
+        <th>E-mail</th>
+        <th>Profile</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+        <tr>
+            <td><strong><%= user.id %></strong></td>
+            <td><strong><%= user.username %></strong></td>
+            <td><strong><%= user.email %></strong></td>
+            <td><%= link_to "Show", user_profile_path(user), class:"btn btn-info btn-sm" %></td>
+            <td><%= link_to "Delete", user_registration_path(user), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-danger btn-sm" %></td> 
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

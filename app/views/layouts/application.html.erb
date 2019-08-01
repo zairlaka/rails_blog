@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' ,'rails.validations', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    
+    <div class="jumbotron" style="background-color:#87ffa8; padding-top:0px;">
+    <%= render :partial => 'layouts/navb' %>
+      <%# <%= link_to "Create", new_post_path(@post),class:"btn btn-success btn-xs"%>
+      <%# <button type="button" class="btn btn-success btn-xs">
+        <%= link_to "<span class='glyphicon glyphicon-plus'></span> Create".html_safe, new_post_path(),render_as_button: true,html: { class: 'btn btn-success' } 
+      </button>  %>
+      <%# <button type="button" class="btn btn-success btn-xs">
+        <span class="glyphicon glyphicon-plus"></span>
+          Create Post
+      </button> %>
+      <h1 class="text-center"><%= yield :page_title%></h1>
+      <h1 class="text-center"><%= yield :devise_title%></h1> 
+        <% if(notice) %>
+          <div class="alert alert-success text-center" role="alert"><p class="notice"><%= notice %></p></div>
+          <% elsif(alert) %>
+          <div class="alert alert-danger text-center" role="alert"><p class="alert"><%= alert %></p></div>
+          <% else %>
+            <div></div>
+        <% end %>
+    </div>
+<div class="container">
+    <%= yield %>
+</div>
+  </body> 
+</html>

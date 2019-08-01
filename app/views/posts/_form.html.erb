@@ -1,0 +1,43 @@
+<div class="container" data-turbolinks="false">
+<%= simple_form_for @post, :validate => true do |f| %>
+   
+
+<% if @post.errors.any? %>
+    <div id="error_explanation">
+    <div class="panel panel-danger">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-ban-circle"> </span> 
+                <%= pluralize(@post.errors.count, "error") %> </strong>
+                <%# pluralize is a rails helper that takes a number and a string as its arguments. 
+                If the number is greater than one, the string will be automatically pluralized. %>
+                prohibited
+                this Post from being saved:
+            </div>
+            <div class="panel-body invalid-feedback">
+            <ul>
+                <% @post.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+            </div>
+        </div>
+    </div>
+  <% end %>
+  <%# if there is any error that not allow us to save the data upper code will show the error %>
+    <div class="form-group">
+        <%= f.label :category %><br>
+        <%= select_tag(:category_id, options_for_select(@categories, f.object.category_id), {class: "form-control"} )%>
+    </div>
+    <div class="form-group">
+        <%# <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> %>
+        <%= f.input :title, input_html: { class: 'form-control' }, placeholder: 'Title of Your Blog here' %>
+    </div>
+    <div class="form-group">
+        <%# <%= f.text_area :body, :rows => 10, style: 'width:100%;' %>
+        <%= f.input :body, as: :summernote, input_html:  {class: 'textarea', rows: 7 },placeholder: 'Content of Your Blog Here' %>
+    </div>
+    <br>
+    <br>
+        <%= f.button :submit, class: 'btn btn-success' %>
+        <%= link_to 'Back', :back,class: 'btn btn-danger pull-right' %>
+    </div>
+<% end %>

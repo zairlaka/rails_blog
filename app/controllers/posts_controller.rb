@@ -59,7 +59,7 @@ class PostsController < ApplicationController
 
 private
     def post_params
-        params.require(:post).permit(:title,:body,:user_id,:category_id)
+        params.require(:post).permit(:title, :body, :user_id, :category_id, :image)
         #white listing called strong parameter
     end
     def find_post

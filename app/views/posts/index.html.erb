@@ -4,20 +4,30 @@
         <% @posts.each do |post| %>
         <div class="cap">
         <%= link_to post_path(post) do %>
-            <div class="panel panel-success">
+            <div class="row">
+              <div class="col-sm-8 ">
+                <div class="thumbnail">
+                  <%= image_tag(post.image_url(), size: "800x400",:alt => "auther pic") %>
+                  <div class="caption">
+                    <h1><strong class="mcolor"><%= post.title %></strong></h1>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 ">
                 <div class="panel-body">
-                    <strong class="mcolor"><%= post.title %></strong>
-                    <span class="pull-right"><%= post.user.email %> | </span>
-                  <span class="glyphicon glyphicon-thumbs-up pull-right"> <%= "#{post.likes.count} | - " %> <%# (post.likes.count) == 1 ? 'Like' : 'Likes'%></span>
+                  <strong><%= "Auther : #{post.user.username} "%></strong>
+                  <strong class="pull-right"><%=" | #{post.user.email}" %> </strong>
+                  <br><br>
+                  <%= image_tag("auther.jpg", size: "300x300",:alt => "auther pic", class: "img-responsive center-block img-circle") %>
                   <%#><strong class="mcolor"><%= link_to post.title, post %>
                 </div>
-                <div class="panel-body">
-                  <%= sanitize post.body,
-                               tags: %w(strong em a b font br p table tbody tr td ol li u img iframe span blockquote pre h1 h2 h3 h4 h5 h6 div strike hr),
-                               attributes: %w(href face class src style ta rget frameborder width height color) %>
+                <div class="panel-footer">
+                  <span class="glyphicon glyphicon-thumbs-up"> <%= "#{post.likes.count} | - " %></span>
+                  <span class="pull-right"><%= "Post at | #{post.created_at.strftime("%m/%d/%y")}" %> </span>
                 </div>
+              </div>
             </div>
             <% end %>
-            </div>
+        </div>
         <% end %>
     </div>

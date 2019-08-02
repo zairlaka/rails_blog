@@ -15,4 +15,6 @@ class Post < ApplicationRecord #and ApplicationRecord is inherit from ActiveReco
             presence: true,
             length: { minimum: 10 } , if: :body_changed?
 
+    mount_uploader :image, ImageUploader
+
 end

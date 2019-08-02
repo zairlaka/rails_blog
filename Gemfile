@@ -9,6 +9,10 @@ gem 'codemirror-rails'
 gem "font-awesome-rails", "~> 4.3"
 #the Super Simple WYSIWYG Editor on Bootstrap
 gem 'summernote-rails'
+# A ruby wrapper for ImageMagick or GraphicsMagick command line. for thumbnails
+gem "mini_magick"
+#This gem provides a simple and extremely flexible way to upload files from Ruby applications. It works well with Rack based web applications,
+gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 # add after giving jqery error user_controller and user_mailer
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'

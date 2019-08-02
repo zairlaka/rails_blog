@@ -18,6 +18,7 @@
                     <div class="panel-body">
                         <h2><%= @post.title %><small class="pull-right">Category - <strong><%= @post.category.name %></strong></small></h2>
                         <hr class="hr-success">
+                        <%= image_tag(@post.image_url(), {class: "img-responsive"}) %>
                         <p>
                           <%= sanitize @post.body,
                                        tags: %w(strong em a b font br p table tbody tr td ol li u img iframe span blockquote pre h1 h2 h3 h4 h5 h6 div strike hr),

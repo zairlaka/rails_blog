@@ -27,6 +27,7 @@
         <%= f.label :category %><br>
         <%= select_tag(:category_id, options_for_select(@categories, f.object.category_id), {class: "form-control"} )%>
     </div>
+
     <div class="form-group">
         <%# <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> %>
         <%= f.input :title, input_html: { class: 'form-control' }, placeholder: 'Title of Your Blog here' %>
@@ -34,6 +35,21 @@
     <div class="form-group">
         <%# <%= f.text_area :body, :rows => 10, style: 'width:100%;' %>
         <%= f.input :body, as: :summernote, input_html:  {class: 'textarea', rows: 7 },placeholder: 'Content of Your Blog Here' %>
+    </div>
+    <% if @post.image? %>
+      <p>
+        <%= image_tag(@post.image_url(:thumb)) %>
+        <%# image_tag(@user.avatar_url) if @user.avatar? %>
+<!--        if thumbnails are delted then run this in rails c Post.find(3)image.recreate_versions!
+            p.remote_image_url = "https://something/image.jpg"
+            p.remove_image!
+-->   </p>
+      <% else %>
+      <img id="blah" src="http://placehold.it/180" alt="your image" />
+    <% end %>
+    <div class="form-group">
+      <%# <%= f.text_area :body, :rows => 10, style: 'width:100%;' %>
+      <%= f.input :image, as: :file, :input_html => {:onchange => "readURL(this);" } %>
     </div>
     <br>
     <br>

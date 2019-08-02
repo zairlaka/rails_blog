@@ -7,7 +7,7 @@
             <div class="row">
               <div class="col-sm-8 ">
                 <div class="thumbnail">
-                  <%= image_tag(post.image_url(), size: "800x400",:alt => "auther pic") %>
+                  <%= image_tag(post.image_url(), size: "800x400",:alt => "banner pic") %>
                   <div class="caption">
                     <h1><strong class="mcolor"><%= post.title %></strong></h1>
                   </div>
@@ -18,7 +18,7 @@
                   <strong><%= "Auther : #{post.user.username} "%></strong>
                   <strong class="pull-right"><%=" | #{post.user.email}" %> </strong>
                   <br><br>
-                  <%= image_tag("auther.jpg", size: "300x300",:alt => "auther pic", class: "img-responsive center-block img-circle") %>
+                  <%= image_tag("author.jpg", size: "300x300",:alt => "author pic", class: "img-responsive center-block img-circle") %>
                   <%#><strong class="mcolor"><%= link_to post.title, post %>
                 </div>
                 <div class="panel-footer">

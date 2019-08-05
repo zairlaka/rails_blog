@@ -13,17 +13,20 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-4 ">
-                <div class="panel-body">
-                  <strong><%= "Auther : #{post.user.username} "%></strong>
-                  <strong class="pull-right"><%=" | #{post.user.email}" %> </strong>
-                  <br><br>
-                  <%= image_tag("author.jpg", size: "300x300",:alt => "author pic", class: "img-responsive center-block img-circle") %>
-                  <%#><strong class="mcolor"><%= link_to post.title, post %>
+              <div class="col-sm-4">
+                <div class="post-info">
+                  <div class="panel-body">
+                    <strong><%= "Auther : #{post.user.username} "%></strong>
+                    <strong class="pull-right"><%=" | #{post.user.email}" %> </strong>
+                    <br><br>
+                    <%= image_tag("author.jpg", size: "300x300",:alt => "author pic", class: "img-responsive center-block img-circle") %>
+                    <%#><strong class="mcolor"><%= link_to post.title, post %>
+                  </div>
                 </div>
                 <div class="panel-footer">
                   <span class="glyphicon glyphicon-thumbs-up"> <%= "#{post.likes.count} | - " %></span>
-                  <span class="pull-right"><%= "Post at | #{post.created_at.strftime("%m/%d/%y")}" %> </span>
+<!--                  <span class="pull-right"><%#= "Post at | #{post.created_at.strftime("%m/%d/%y")}" %> </span>-->
+                  <span class="pull-right"><small>Post <%= time_ago_in_words(post.updated_at) %> ago</small></span>
                 </div>
               </div>
             </div>

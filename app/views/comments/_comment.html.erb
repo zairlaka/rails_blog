@@ -1,7 +1,10 @@
 
 
 <div class="panel panel-success">
-    <div class="panel-heading"><strong><span class="glyphicon glyphicon-user"></span> <%= comment.name%></strong></div>
+    <div class="panel-heading">
+      <strong><span class="glyphicon glyphicon-user"></span> <%= comment.name%></strong>
+      <span class="pull-right"><small>- <%= time_ago_in_words(comment.updated_at) %> ago</small></span>
+    </div>
 
     <div class="panel-body">
         <%= comment.message %>

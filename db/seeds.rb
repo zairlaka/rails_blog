@@ -22,7 +22,7 @@ Post.create!([
              ])
 Comment.create!([
   {name: "DaveDev", message: "Personally, I like the ruby because of its robustness and flexibility.", post_id: 1},
-  {name: "Fresher", message: "but for newcomers, it is very hard to digest the smartness and conventions of the ROR, and I fell dumb in beginning.", post_id: 1},
+  {name: "Fresher", message: "but for newcomers, it is very hard to digest the smartness and conventions of the ROR, and I felt dumb in beginning.", post_id: 1},
   {name: "Nooby", message: "what a biseness, I would say", post_id: 2},
   {name: "zair", message: "who cares!! unless you are a gambler :)", post_id: 2},
   {name: "PureSoul", message: "The best on earth.Rohail Hayat is the best composer of all time. <3", post_id: 4},
@@ -40,11 +40,13 @@ Like.create!([
 ])
 
 Relationship.create!([
-  {follower_id: 1, user_id: 4},
-  {follower_id: 2, user_id: 4},
-  {follower_id: 4, user_id: 1}
+  {follower_id: 1, followed_user_id: 4},
+  {follower_id: 2, followed_user_id: 4},
+  {follower_id: 4, followed_user_id: 1}
 ])
 #rake db:seed:dump APPEND=true
 #rake db:seed:dump MODELS=User
 #
 # ps -ef | grep postgres
+# if above line won't work in windows
+# just restarting the service: postgresql-x64-9.5

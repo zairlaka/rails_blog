@@ -63,12 +63,13 @@ postgresql: &postgresql
   host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: root
+  username: postgres
   password: proadmin
 
 development:
   <<: *postgresql
   database: blog
+  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

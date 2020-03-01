@@ -13,12 +13,12 @@ Rails.application.routes.draw do
 
   get '/users', to: 'users#index'
   get '/user/:id', to: 'users#show', :as => 'user_profile'
-  # resources :users do
-  #   member do
-  #     get :following, :followers
-  #   end
-  # end
-  resources :relationships,       only: [:create, :destroy]
+  resources :users,only: [:index] do
+    member do
+      resources :followings,only: [:create, :destroy]
+    end
+  end
+  
   get '/search' => 'pages#search', :as => 'search_page'
   # get '/search', to: 'pages#search'
 

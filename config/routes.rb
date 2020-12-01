@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments #nested thing
     resources :likes
+    get 'print_pdf', on: :member
   end
 
   resources :tags , except: [:show]

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :find_post, only: [:show,:edit,:update,:destroy]
+    before_action :find_post, only: [:show,:print_pdf,:edit,:update,:destroy]
     before_action :authenticate_user!, only: [:new,:edit,:destroy]
     before_action :is_owner, only: [:edit,:destroy]
 
@@ -8,8 +8,30 @@ class PostsController < ApplicationController
         params[:tag] ? @posts = Post.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5) : @posts = Post.paginate(:page => params[:page], :per_page => 5)
     end
     
+    
+    def print_pdf
+        @post
+        pdf = WickedPdf.new.pdf_from_string(
+            render_to_string(template: 'posts/print_pdf', layout: 'pdf')
+          )
+        save_path = Rails.root.join('public/uploads/pdfs',"post-#{@post.id}.pdf")
+        File.open(save_path, 'wb') do |file|
+        file << pdf
+        end
+        render(:layout => "pdf")
+    end
+
+    
     def show
         @post = Post.find(params[:id])
+        respond_to do |format|
+            format.html
+            format.pdf do
+                render pdf: "your_pdf",
+                template: "posts/show.html.erb",
+                layout: 'pdf.html'
+            end
+        end
     end
     def new
         @post = Post.new

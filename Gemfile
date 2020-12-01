@@ -11,7 +11,9 @@ gem 'jquery-turbolinks'
 gem 'codemirror-rails'
 gem "font-awesome-rails", "~> 4.3"
 # jqurery file  Add Chosen jQuery library for multiple select and autocompletion
-
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+#pdf generator
 gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
 gem 'chosen-rails', '~> 1.5', '>= 1.5.2'
 #the Super Simple WYSIWYG Editor on Bootstrap

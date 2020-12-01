@@ -14,3 +14,9 @@ class CreatePosts < ActiveRecord::Migration[5.1]
     drop_table :posts
   end
 end
+
+# class AddCategoryToPosts < ActiveRecord::Migration[5.1]
+#   def change
+#     add_reference :posts, :category, foreign_key: true
+#   end
+# end

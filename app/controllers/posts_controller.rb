@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
     def index
         #params[:tag] ? @posts = Post.tagged_with(params[:tag]) : @posts = Post.all.order("created_at DESC")
-        params[:tag] ? @posts = Post.tagged_with(params[:tag]) : @posts = Post.paginate(:page => params[:page], :per_page => 5)
+        params[:tag] ? @posts = Post.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5) : @posts = Post.paginate(:page => params[:page], :per_page => 5)
     end
     
     def show

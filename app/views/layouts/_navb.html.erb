@@ -14,7 +14,7 @@
         
         <% if(user_signed_in?) %>
           <% if(current_user.isadmin) %>
-            <li><%= link_to "<span class='glyphicon glyphicon-list-alt' style='color:#80eda8'></span> All Users".html_safe, users_path(),render_as_button: true,html: { class: 'btn btn-success' } %></li>
+            <li><%= link_to "<span class='glyphicon glyphicon-th-large' style='color:#80eda8'></span> DashBoard".html_safe, dash_path(),render_as_button: true,html: { class: 'btn btn-success' } %></li>
             <li><%= link_to "Profile".html_safe, user_profile_path(current_user),render_as_button: true,html: { class: 'btn btn-success' } %></li>
           <% else %>
             <li><%= link_to "Profile".html_safe, user_profile_path(current_user),render_as_button: true,html: { class: 'btn btn-success' } %></li>

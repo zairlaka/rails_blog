@@ -21,13 +21,15 @@
  @import "nav"; 
  @import "sign";
  @import "summernote";
+ @import "admin";
+
 
 @import "bootstrap";
 @import "codemirror";
 @import "codemirror/themes/solarized";
 @import "codemirror";
 @import "codemirror/themes/solarized";
- 
+
 .form-control:focus {
     border-color: #28a745;
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);

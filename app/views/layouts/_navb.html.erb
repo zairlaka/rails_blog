@@ -16,15 +16,15 @@
           <% if(current_user.isadmin) %>
             <li><%= link_to "<span class='glyphicon glyphicon-th-large' style='color:#80eda8'></span> DashBoard".html_safe, dash_path(),render_as_button: true,html: { class: 'btn btn-success' } %></li>
             <li><%= link_to "Profile".html_safe, user_profile_path(current_user),render_as_button: true,html: { class: 'btn btn-success' } %></li>
-          <% else %>
-            <li><%= link_to "Profile".html_safe, user_profile_path(current_user),render_as_button: true,html: { class: 'btn btn-success' } %></li>
           <% end %>
+            <li><%= link_to "Profile".html_safe, user_profile_path(current_user),render_as_button: true,html: { class: 'btn btn-success' } %></li>
+
         <% end %>
 <!--        search bar----------------------------->
         <li>
         <%= form_tag(search_page_path, :method => "get", class: 'navbar-form navbar-center') do %>
           <div class="input-group">
-            <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+            <%= search_field_tag :search, params[:search], placeholder: "Username or email", class: "form-control" %>
             <div class="input-group-btn">
               <%= button_tag "", :class => 'btn btn-success glyphicon glyphicon-search',:name => nil%>
 

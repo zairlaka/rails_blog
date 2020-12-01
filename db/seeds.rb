@@ -12,7 +12,7 @@ User.create!([
   {email: "hello1@gmail.com", password: "pass123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, confirmation_token: "ve4n5CzExbGk8SqpeikH", confirmed_at: nil, confirmation_sent_at: "2019-07-19 13:47:48", isadmin: false, username: "hello1", image: nil},
   {email: "test@test.com", password: "pass123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, confirmation_token: "i99NmPLXbkp-H64yTu2N", confirmed_at: nil, confirmation_sent_at: "2019-07-23 07:13:45", isadmin: false, username: "test", image: nil},
   {email: "username@blog.com", password: "pass123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, confirmation_token: "VKPbTNZp3cSZgbhx_-TC", confirmed_at: nil, confirmation_sent_at: "2019-08-01 07:47:07", isadmin: false, username: "username ", image: nil},
-  {email: "hitachi.xoxoxo@gmail.com", password: "admin123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, confirmation_token: "MJL7Hb2z9QEVRvcX9R9T", confirmed_at: "2019-08-01 11:05:33", confirmation_sent_at: "2019-08-01 11:04:37", isadmin: false, username: "Salman Dost", image: nil}
+  {email: "hitachi.xoxoxo@gmail.com", password: "pass123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, confirmation_token: "MJL7Hb2z9QEVRvcX9R9T", confirmed_at: "2019-08-01 11:05:33", confirmation_sent_at: "2019-08-01 11:04:37", isadmin: false, username: "Salman Dost", image: nil}
 ])
 Category.create!([
   {name: "Tech"},

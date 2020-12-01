@@ -9,8 +9,9 @@ class User < ApplicationRecord
   has_many :posts
   has_many :likes, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
-        #  :confirmable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
+  #https://accounts.google.com/DisplayUnlockCaptcha this is the solution for allow server to access this email
   #------------------------------------------------------------------------------------------------
   # Will return an array of follows for the given user instance
   has_many :received_follows, foreign_key: :followed_user_id, class_name: "Relationship"

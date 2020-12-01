@@ -4,7 +4,8 @@ class PostsController < ApplicationController
     before_action :is_owner, only: [:edit,:destroy]
 
     def index
-        @posts = Post.all.order("created_at DESC")
+        #params[:tag] ? @posts = Post.tagged_with(params[:tag]) : @posts = Post.all.order("created_at DESC")
+        params[:tag] ? @posts = Post.tagged_with(params[:tag]) : @posts = Post.paginate(:page => params[:page], :per_page => 5)
     end
     
     def show
@@ -59,7 +60,9 @@ class PostsController < ApplicationController
 
 private
     def post_params
-        params.require(:post).permit(:title, :body, :user_id, :category_id, :image)
+        params.require(:post).permit(:title, :body, :user_id, :category_id, :image,
+                                     :tag_list, :tag, { tag_ids: [] }, :tag_ids )
+
         #white listing called strong parameter
     end
     def find_post

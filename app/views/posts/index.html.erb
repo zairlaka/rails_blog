@@ -1,5 +1,6 @@
 <% content_for :page_title, "Index" %>
-<br> 
+<br>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
     <div class="container">
         <% @posts.each do |post| %>
         <div class="cap">
@@ -7,7 +8,7 @@
             <div class="row">
               <div class="col-sm-8 ">
                 <div class="thumbnail">
-                  <%= image_tag(post.image_url(), size: "800x400",:alt => "banner pic") %>
+                  <%= image_tag(post.image_url(), size: "800x400",:alt => "banner pic", class: "img-responsive") %>
                   <div class="caption">
                     <h1><strong class="mcolor"><%= post.title %></strong></h1>
                   </div>
@@ -16,21 +17,30 @@
               <div class="col-sm-4">
                 <div class="post-info">
                   <div class="panel-body">
-                    <strong><%= "Auther : #{post.user.username} "%></strong>
+                    <strong><p>Author :</p></strong>
+                    <strong><%= " #{post.user.username} "%></strong>
                     <strong class="pull-right"><%=" | #{post.user.email}" %> </strong>
                     <br><br>
                     <%= image_tag("author.jpg", size: "300x300",:alt => "author pic", class: "img-responsive center-block img-circle") %>
                     <%#><strong class="mcolor"><%= link_to post.title, post %>
                   </div>
+                  <ul class="tags">
+                    <li class="bbox">TAGS</li>
+                    <% post.tags.each do |t| %>
+                      <%= link_to tag_path(t.name) do%><li class="tag"><%= t.name %></li><% end %>
+                    <% end %>
+                  </ul>
                 </div>
                 <div class="panel-footer">
                   <span class="glyphicon glyphicon-thumbs-up"> <%= "#{post.likes.count} | - " %></span>
 <!--                  <span class="pull-right"><%#= "Post at | #{post.created_at.strftime("%m/%d/%y")}" %> </span>-->
                   <span class="pull-right"><small>Post <%= time_ago_in_words(post.updated_at) %> ago</small></span>
                 </div>
+
               </div>
             </div>
             <% end %>
         </div>
         <% end %>
     </div>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>

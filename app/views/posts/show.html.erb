@@ -17,6 +17,12 @@
                  </div> 
                     <div class="panel-body">
                         <h2><%= @post.title %><small class="pull-right">Category - <strong><%= @post.category.name %></strong></small></h2>
+                      <ul class="tags">
+                        <li class="bbox">TAGS</li>
+                        <% @post.tags.each do |t| %>
+                          <%= link_to tag_path(t.name) do%><li class="tag"><%= t.name %></li><% end %>
+                        <% end %>
+                      </ul>
                         <hr class="hr-success">
                         <%= image_tag(@post.image_url(), {class: "img-responsive"}) %>
                         <p>

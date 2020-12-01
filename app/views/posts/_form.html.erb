@@ -30,11 +30,14 @@
 
     <div class="form-group">
         <%# <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> %>
-        <%= f.input :title, input_html: { class: 'form-control' }, placeholder: 'Title of Your Blog here' %>
+        <%= f.input :title, input_html: { class: 'form-control' }, placeholder: 'Title of Your Blog here'%>
     </div>
     <div class="form-group">
         <%# <%= f.text_area :body, :rows => 10, style: 'width:100%;' %>
         <%= f.input :body, as: :summernote, input_html:  {class: 'textarea', rows: 7 },placeholder: 'Content of Your Blog Here' %>
+    </div>
+    <div class="form-group">
+        <%= f.input :tag_ids, as: :select, collection: Tag.order(:name), label_method: :name, input_html: {multiple: true} %>
     </div>
     <% if @post.image? %>
       <p>

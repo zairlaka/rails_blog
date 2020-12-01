@@ -22,7 +22,7 @@
 //= require summernote-init
 // require activestorage
 
-
+//= require chosen-jquery
 
 //= require rails.validations
 //= require rails.validations.simple_form
@@ -47,3 +47,9 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+$(document).on('turbolinks:load', function () {
+    $('#post_tag_ids').chosen({
+        allow_single_deselect: true,
+        width: '100%'
+    })
+});

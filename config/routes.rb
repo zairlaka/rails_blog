@@ -35,9 +35,12 @@ Rails.application.routes.draw do
     resources :comments #nested thing
     resources :likes
   end
-  
+  # add this line to link tags to posts with the respective tag
+  get 'tags/:tag', to: 'posts#index', as: :tag
+
   root "posts#index"
-  
+
+
   # this will create a crud function for post
   # you can check "rails routes" after or before it 
   

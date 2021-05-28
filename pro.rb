@@ -504,3 +504,44 @@ json = JSON.pretty_generate(bridges)
 File.open("wichita_bridge_data.json", 'w') { |file| file.write(json) }
 
 ###############################################
+
+Adding an Item to an Amazon DynamoDB Table
+
+require 'aws-sdk-dynamodb'
+
+def add_item_to_table(dynamodb_client, table_item)
+  dynamodb_client.put_item(table_item)
+  puts "Added book '#{table_item[:item][:name]} " \
+    "(#{table_item[:item][:authorName]})'."
+rescue StandardError => e
+  puts "Error adding book '#{table_item[:item][:name]} " \
+    "(#{table_item[:item][:authorName]})': #{e.message}"
+end
+
+def lambda_handler(event:, context:)
+
+  region = 'us-west-2'
+  table_name = 'Books'
+  id = '12'
+  name = 'ahsan'
+  authorName = 'Saeed'
+  rating = 5.5
+
+  dynamodb_client = Aws::DynamoDB::Client.new(region: region)
+
+  table_item = {
+    table_name: table_name,
+    item: {
+      id: id,
+      name: name,
+      authorName: authorName
+    }
+  }
+
+  puts "Adding movie '#{table_item[:item][:title]} " \
+    " (#{table_item[:item][:year]})' " \
+    "to table '#{table_name}'..."
+  add_item_to_table(dynamodb_client, table_item)
+end
+  
+###############################################

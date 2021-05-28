@@ -507,6 +507,8 @@ File.open("wichita_bridge_data.json", 'w') { |file| file.write(json) }
 
 Adding an Item to an Amazon DynamoDB Table
 
+###############################################
+
 require 'aws-sdk-dynamodb'
 
 def add_item_to_table(dynamodb_client, table_item)

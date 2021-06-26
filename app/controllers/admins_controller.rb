@@ -1,17 +1,13 @@
-class AdminController < ApplicationController
+class AdminsController < ApplicationController
   before_action :is_admin, only: [:index, :admin_dashboard]
-  before_action :is_signin, only: [:show]
-  def index
+
+  def all_users
     @users = User.all.order("created_at DESC")
   end
-  def show
-    @user = User.find(params[:id])
-  end
 
-  def admin_dashboard
+  def dashboard
 
   end
-
 
   def is_admin
     if(user_signed_in?)
@@ -22,6 +18,7 @@ class AdminController < ApplicationController
       redirect_to root_path
     end
   end
+
   def is_signin
     if(user_signed_in?)
 

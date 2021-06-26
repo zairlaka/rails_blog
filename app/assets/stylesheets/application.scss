@@ -25,10 +25,10 @@
 
 
 @import "bootstrap";
-@import "codemirror";
-@import "codemirror/themes/solarized";
-@import "codemirror";
-@import "codemirror/themes/solarized";
+// @import "codemirror";
+// @import "codemirror/themes/solarized";
+// @import "codemirror";
+// @import "codemirror/themes/solarized";
 
 .form-control:focus {
     border-color: #28a745;
@@ -73,7 +73,7 @@ a:active {
 }
 .border-main
 {
-  border-color :aqua
+  border-color : #87ffa8
 }
 //--------------------------------------pagination
 .pagination > .active > span{

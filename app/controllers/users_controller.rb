@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 # POST /users.json
 before_action :is_admin, only: [:index]
 #before_filter :authenticate_admin!, :except => [:index, :show] # either you can do it
+def show
+  @user = User.find(params[:id])
+end
+
 def create
   @user = User.new(params[:user])
 

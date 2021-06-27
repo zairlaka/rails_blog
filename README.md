@@ -24,10 +24,11 @@
   - sidekiq ❌
   - whenever ❌
 - API version ❌
+- Docker ❌
 - React ❌
 -----------
 # TODO ( Low )
-- show posts count in admin view users list
+- show posts count in admin view users list (done ✅)
 - add blog favicon
 - should give a page to show only that user's post
 -----------------------------------
@@ -37,7 +38,9 @@
 >   -  💡 what we should do when that user has posts should we soft delete that user or what
 
 > - ⚠️ a simple user can access /admins/all_users
->    - 💡 will be fixed when we implemented cancancan
+>    - 💡 will be fixed when we implement cancancan
+
+> - ⚠️ self following should not allowed (fixed ✅)
 
 > Add your suggestions or comments like this
 
@@ -48,5 +51,7 @@
 
 > - fix broken links for admin and users (zair🧛🏻)
 > - fix association btw post and tags ( zair🧛🏻 )
+> - fix self following issue ( zair🧛🏻 )
+> - add column in view of total post by each user ( zair🧛🏻 )
 
 > Add your fixed work here with name like this

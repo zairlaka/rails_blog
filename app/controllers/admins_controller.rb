@@ -2,7 +2,7 @@ class AdminsController < ApplicationController
   before_action :is_admin, only: [:index, :admin_dashboard]
 
   def all_users
-    @users = User.all.order("created_at DESC")
+    @users = User.left_outer_joins(:posts).select("users.id, username, email, count(posts.user_id) as total_posts").group("users.id,username,email,posts.user_id").order("users.created_at DESC")
   end
 
   def dashboard

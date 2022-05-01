@@ -135,7 +135,19 @@ puts max.nil? ? 0 : max
 
 occur = 1289.to_s(2).chars.map.with_index { |c,i| i if c == "1" }.compact
 occur.length > 1 ? occur.each_cons(2).map { |a,b| b-a }.max - 1 : 0
+####################################################################
+# s and t contains string and '#' character in a string means backspace
+# INPUT 
+# s = "ab#c" -> "ac"
+# t = "ad#c" -> "ac"
+# OUTPUT: true
+# note if input is s = "abc###" -> will become "" empty string
 
+def backspace_compare(s, t)
+    while s.include?("#") do s.gsub!(/(^#+)|\w#/, '') end
+    while t.include?("#") do t.gsub!(/(^#+)|\w#/, '') end
+    s == t
+end
 
 ####################################################################
 

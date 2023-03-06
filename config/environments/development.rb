@@ -59,10 +59,10 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = {:host => 'localhost:3000' }
   config.action_mailer.default_url_options = {:host => 'localhost:3000' }
   
-
+  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/, /file:\/\/*/, 'file://', nil]
       #---------------------------
   # config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
-  
+  config.action_cable.url = "ws://localhost:3000/cable"
   # change to false to prevent email from being sent during development
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true

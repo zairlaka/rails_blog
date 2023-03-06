@@ -9,11 +9,9 @@
     <div class="panel-body">
         <%= comment.message %>
         <% if current_user.present? %>
-        <% if(current_user == @post.user || current_user.isadmin) %>
-            <%=  link_to 'Delete', [comment.post, comment], method: :delete, class: "btn btn-danger pull-right btn-xs" , data: {confirm: "Are you sure?"}%>
-        <% end %>
+            <% if(current_user == @post.user || current_user.isadmin) %>
+                <%=  link_to 'Delete', [comment.post, comment], method: :delete, class: "btn btn-danger pull-right btn-xs" , data: {confirm: "Are you sure?"}%>
+            <% end %>
         <% end %> 
     </div>
 </div>
-
-

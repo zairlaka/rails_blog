@@ -1,5 +1,5 @@
 
-<%= simple_form_for ([@post, @post.comments.build])  do |f| %>
+<%= simple_form_for ([@post, @post.comments.build]), remote: true  do |f| %>
 
 
 <% if @post.errors.any? %>

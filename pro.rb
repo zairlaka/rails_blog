@@ -577,3 +577,43 @@ def lambda_handler(event:, context:)
 end
   
 ###############################################
+require 'json'
+require 'net/http'
+
+# Define the URL from which to fetch JSON data
+json_url = 'https://dummyjson.com/products'
+
+# Function to fetch JSON data from a URL
+def fetch_json_data(url)
+  uri = URI(url)
+  response = Net::HTTP.get(uri)
+  JSON.parse(response)
+end
+
+# Function to sort and group JSON data by a specific key
+  def sort_and_group(json_data, key)
+  json_data.sort_by { |item| item[key] }
+           .group_by { |item| item[key] }
+end
+
+# Fetch JSON data from the URL
+begin
+  json_data = fetch_json_data(json_url)["products"]
+  # puts json_data
+  # Define the key by which to group and sort the JSON data
+  group_by_key = 'category'
+
+  # Sort and group the JSON data
+  grouped_data = sort_and_group(json_data, group_by_key)
+
+  # Print the sorted and grouped data
+  grouped_data.each do |key, items|
+    puts "Category: #{key}"
+    # items.each { |item| puts "  #{item}" }
+    puts items.map {|h| h['price']}.reduce(:+)
+  end
+rescue StandardError => e
+  puts "Error fetching or processing JSON data: #{e.message}"
+end
+###############################################
+    

@@ -97,7 +97,8 @@ end
  puts "m -->  #{solution(m) == 1}"
  puts "n -->  #{solution(n) == 3}"
 ####################################################################
-# A non-empty array A consisting of N integers is given. The first covering prefix of array A is the smallest integer P such that 0≤P<N and such that every value that occurs in array A also occurs in sequence A[0], A[1], ..., A[P].
+# A non-empty array A consisting of N integers is given. The first covering prefix of array A is the smallest integer P 
+# such that 0≤P<N and such that every value that occurs in array A also occurs in sequence A[0], A[1], ..., A[P].
 
 # For example, the first covering prefix of the following 5−element array A:
 
@@ -187,7 +188,8 @@ def pla(a,k)
   a
 end
 ####################################################################
-# A non-empty array A consisting of N integers is given. The array contains an odd number of elements, and each element of the array can be paired with another element that has the same value, except for one element that is left unpaired.
+# A non-empty array A consisting of N integers is given. The array contains an odd number of elements, and each element of the array can be paired 
+#with another element that has the same value, except for one element that is left unpaired.
 
 # For example, in array A such that:
 
@@ -405,7 +407,9 @@ p my_flatten(a1)
 # Assessment InvoZone ahsan saeed
 
 Letter Count
-# Have the function LetterCount(str) take the str parameter being passed and return the first word with the greatest number of repeated letters. For example: "Today, is the greatest day ever!" should return greatest because it has 2 e's (and 2 t's) and it comes before ever which also has 2 e's. If there are no words with repeating letters return -1. Words will be separated by spaces.
+# Have the function LetterCount(str) take the str parameter being passed and return the first word with the greatest number of repeated letters.
+# For example: "Today, is the greatest day ever!" should return greatest because it has 2 e's (and 2 t's) and it comes before ever which also has 2 e's.
+# If there are no words with repeating letters return -1. Words will be separated by spaces.
 
 Examples:
 Input: "Hello apple pie"
@@ -426,7 +430,21 @@ Examples:
 
 #####################################
 
-Background We are given directions to go from one point to another. The directions are "NORTH", "SOUTH", "WEST", "EAST". Clearly "NORTH" and "SOUTH" are opposite, "WEST" and "EAST" too. Going one direction and coming back the opposite direction is a wasted effort, so let's concise these directions to go the shortest route. For example, given the following directions: plan = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]. You can immediately see that going "NORTH" and then "SOUTH" is not reasonable, better stay to the same place! So the task is to reduce a simplified version of the plan. A better plan in this case is simply: plan = ["WEST"] Other examples: In ["NORTH", "SOUTH", "EAST", "WEST"], the direction "NORTH" + "SOUTH" is going north and coming back right away. What a waste of time! Better to do nothing. The path becomes ["EAST", "WEST"], now "EAST" and "WEST" annihilate each other, therefore, the final result is [] (nil in Clojure). In ["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], "NORTH" and "SOUTH" are not directly opposite but they become directly opposite after the reduction of "EAST" and "WEST" so the whole path is reducible to ["WEST", "WEST"]. Task You have to write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side). The Haskell version takes a list of directions with data Direction = North | East | West | South. The Clojure version returns nil when the path is reduced to nothing. Specification dir_reduc(arr) Parameters arr: Array (of Strings) - An array with each index containing 1 of the 4 cardinal directions, all in uppercase Return Value Array (of Strings) - The optimized set of instructions Examples arr Return Value ["NORTH","SOUTH","SOUTH","EAST","WEST","NORTH","WEST"] ["WEST"] ["NORTH","SOUTH","SOUTH","EAST","WEST","NORTH"] [] ["NORTH","WEST","SOUTH","EAST"] ["NORTH","WEST","SOUTH","EAST"] Note Not all paths can be made simpler. The path ["NORTH", "WEST", "SOUTH", "EAST"] is not reducible. "NORTH" and "WEST", "WEST" and "SOUTH", "SOUTH" and "EAST" are not directly opposite of each other and can't become such. Hence the result path is itself : ["NORTH", "WEST", "SOUTH", "EAST"].
+# Background We are given directions to go from one point to another. The directions are "NORTH", "SOUTH", "WEST", "EAST". Clearly "NORTH" and "SOUTH" are opposite,
+# "WEST" and "EAST" too. Going one direction and coming back the opposite direction is a wasted effort, so let's concise these directions to go the shortest route.
+# For example, given the following directions: plan = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]. You can immediately see that going "NORTH" and
+# then "SOUTH" is not reasonable, better stay to the same place! So the task is to reduce a simplified version of the plan. A better plan in this case is simply:
+# plan = ["WEST"] Other examples: In ["NORTH", "SOUTH", "EAST", "WEST"], the direction "NORTH" + "SOUTH" is going north and coming back right away. 
+# What a waste of time! Better to do nothing. The path becomes ["EAST", "WEST"], now "EAST" and "WEST" annihilate each other, therefore, the final result is [] 
+# (nil in Clojure). In ["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], "NORTH" and "SOUTH" are not directly opposite but 
+# they become directly opposite after the reduction of "EAST" and "WEST" so the whole path is reducible to ["WEST", "WEST"]. 
+# Task You have to write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed
+# (W<->E or S<->N side by side). The Haskell version takes a list of directions with data Direction = North | East | West | South. The Clojure version returns nil 
+# when the path is reduced to nothing. Specification dir_reduc(arr) Parameters arr: Array (of Strings) - An array with each index containing 1 of the 4 cardinal directions,
+# all in uppercase Return Value Array (of Strings) - The optimized set of instructions Examples arr Return Value ["NORTH","SOUTH","SOUTH","EAST","WEST","NORTH","WEST"] 
+# ["WEST"] ["NORTH","SOUTH","SOUTH","EAST","WEST","NORTH"] [] ["NORTH","WEST","SOUTH","EAST"] ["NORTH","WEST","SOUTH","EAST"] Note Not all paths can be made simpler.
+# The path ["NORTH", "WEST", "SOUTH", "EAST"] is not reducible. "NORTH" and "WEST", "WEST" and "SOUTH", "SOUTH" and "EAST" are not directly opposite of each other and 
+# can't become such. Hence the result path is itself : ["NORTH", "WEST", "SOUTH", "EAST"].
 
 def dirReduc(arr)
    plan = []

@@ -149,7 +149,21 @@ def backspace_compare(s, t)
     while t.include?("#") do t.gsub!(/(^#+)|\w#/, '') end
     s == t
 end
+####################################################################
 
+# this is how ROT13 algorithm works,
+
+# Original text:
+
+# Why did the chicken cross the road? => # Jul qvq gur puvpxra pebff gur ebnq?
+# Gb trg gb gur bgure fvqr! => To get to the other side!
+
+def rot13(secret_messages)
+  # your code here
+    secret_messages.map do |c|
+        c.tr("A-Za-z", "N-ZA-Mn-za-m")
+    end
+end
 ####################################################################
 
 # that, given an array A consisting of N integers and an integer K, returns the array A rotated K times.
